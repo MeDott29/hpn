@@ -10,6 +10,7 @@ The repository includes:
 * Classification scripts for CIFAR-100, ImageNet-200, and CUB Birds.
 * Script to construct your own prototypes.
 * Joint classification and regression script for OmniArt.
+* **NEW**: Einstein-Rosen bridge implementation that travels through the center of the poles of the hypersphere.
 
 ## Downloading and constructing hyperspherical prototypes
 
@@ -52,6 +53,29 @@ wget -r -nH --cut-dirs=3 --no-parent --reject="index.html*" http://isis-data.sci
 wget -r -nH --cut-dirs=3 --no-parent --reject="index.html*" http://isis-data.science.uva.nl/mettes/hpn/data/omniart/
 cd ..
 ```
+
+## Einstein-Rosen Bridge for Hyperspherical Prototype Networks
+
+This repository now includes an implementation of an Einstein-Rosen bridge that travels through the center of the poles of the hypersphere. The bridge creates a wormhole-like connection between antipodal points on the hypersphere, allowing for more efficient information transfer and potentially improved classification performance.
+
+To run the HPN with Einstein-Rosen bridge on CIFAR-100:
+```
+python hpn_einstein_rosen.py --datadir data/ --resdir res/ --hpnfile prototypes/sgd/prototypes-50d-100c.npy --bridge_radius 0.3 --seed 100
+```
+
+For 3D embeddings, you can visualize the Einstein-Rosen bridge by adding the `--visualize` flag:
+```
+python hpn_einstein_rosen.py --datadir data/ --resdir res/ --hpnfile prototypes/sgd/prototypes-3d-100c.npy --bridge_radius 0.3 --visualize --seed 100
+```
+
+The visualization will show:
+- Original points on the hypersphere (blue)
+- Transformed points after passing through the bridge (red)
+- North and South poles of the hypersphere (green and yellow)
+- The bridge axis connecting the poles through the center (black line)
+
+The bridge radius parameter controls how much of the hypersphere near the poles is affected by the wormhole. A smaller radius means a more localized effect.
+
 Please cite the paper accordingly:
 ```
 @inproceedings{mettes2019hyperspherical,
