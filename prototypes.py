@@ -121,9 +121,9 @@ if __name__ == "__main__":
         prototypes = nn.Parameter(F.normalize(prototypes, p=2, dim=1))
         optimizer = optim.SGD([prototypes], lr=args.learning_rate, \
                 momentum=args.momentum)
-        print "%03d/%d: %.4f\r" %(i, args.epochs, sep),
+        print("%03d/%d: %.4f\r" %(i, args.epochs, sep), end="")
         sys.stdout.flush()
-    print
+    print()
     
     # Store result.
     np.save(args.resdir + "prototypes-%dd-%dc.npy" %(args.dims, args.classes), \
